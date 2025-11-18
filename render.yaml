@@ -1,0 +1,13 @@
+
+services:
+  - type: web
+    name: webstudio
+    env: node
+    plan: starter
+    buildCommand: "pnpm install --frozen-lockfile && pnpm --filter ./apps/builder... build"
+    startCommand: "pnpm --filter ./apps/builder... start"
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NODE_ENV
+        value: production
